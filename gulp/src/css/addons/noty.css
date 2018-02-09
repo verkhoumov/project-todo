@@ -1,0 +1,88 @@
+﻿/**
+ *  Import addon.
+ */
+@import '../../../node_modules/noty/lib/noty.css';
+
+
+/**
+ *  Restyle.
+ */
+.noty_theme__custom.noty_bar {
+	overflow: hidden;
+	border-radius: 0;
+	position: relative;
+}
+
+.noty_theme__custom.noty_bar + .noty_bar {
+	margin-top: 0;
+	border-top: 1px solid rgba(255, 255, 255, .2);
+}
+
+.noty_theme__custom.noty_bar .noty_body {
+	font-size: .875rem;
+	padding: .625rem .9375rem;
+}
+
+.noty_theme__custom.noty_bar .noty_buttons {
+	padding: 10px;
+}
+
+/* Цвета уведомлений */
+.noty_theme__custom.noty_type__alert,
+.noty_theme__custom.noty_type__notification {
+	background-color: #F6F5F9;
+	color: #7F879A;
+}
+
+.noty_theme__custom.noty_type__warning {
+	background-color: #FD9D37;
+	color: #FFF;
+}
+
+.noty_theme__custom.noty_type__error {
+	color: #FFEBEE;
+	background: #F44336;
+}
+
+.noty_theme__custom.noty_type__info,
+.noty_theme__custom.noty_type__information {
+	background-color: #1283EC;
+	color: #F5FAFF;
+}
+
+.noty_theme__custom.noty_type__success {
+	color: #FFF;
+	background: #4CAF50;
+}
+
+/* Позиционирование */
+#noty_layout__topRight {
+	top: 0;
+	right: 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+
+/**
+ *  Responsive.
+ */
+/* Size: SM */
+@media (min-width: 540px) {
+	/* Noty */
+	#noty_layout__topRight {
+		top: 20px;
+		right: 20px;
+		width: 325px;
+	}
+
+	.noty_theme__custom.noty_bar {
+		border-radius: 3px;
+		box-shadow: 0 2px 15px 2px rgba(0, 0, 0, .2);
+	}
+
+	.noty_theme__custom.noty_bar + .noty_bar {
+		margin-top: 20px;
+		border-top: none;
+	}
+}

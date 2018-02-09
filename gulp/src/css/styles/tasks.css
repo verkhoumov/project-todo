@@ -1,0 +1,45 @@
+﻿/**
+ *  Список задач.
+ */
+.task-item {
+	
+}
+
+.task-item .image > img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.task-item .title {
+	font-weight: 700;
+}
+
+.task-item .tags {
+	margin: -2.5px;
+	margin-top: 5px;
+
+	/* .d-flex */
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.task-item .tags > .tag {
+	margin: 2.5px;
+	font-size: 12px;
+	font-weight: 500;
+	padding: 2px 6px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Эффект: возможность редактирования задачи */
+.tasks-list.editable .task-item {
+	cursor: pointer;
+}
+
+/* Эффект: найденная задача */
+.tasks-list.search .task-item:not(.find) {
+	opacity: .4;
+}

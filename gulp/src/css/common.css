@@ -1,0 +1,18 @@
+/* Bootstrap */
+@import './addons/bootstrap.css';
+
+/* Main styles */
+@import './styles/main.css';
+
+/* Addons */
+@import './addons/noty.css';
+@import './addons/animate.css';
+
+/* Styles */
+@import './styles/text.css';
+@import './styles/image.css';
+@import './styles/tasks.css';
+@import './styles/shares.css';
+
+/* Common responsive */
+@import './responsive.css';

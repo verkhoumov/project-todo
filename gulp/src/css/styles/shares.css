@@ -1,0 +1,74 @@
+﻿/**
+ *  Список пользователей с доступом к списку задач.
+ */
+.shares {
+	margin-top: 13px;
+}
+
+.shares-list {
+	margin: -7.5px;
+
+	/* .d-flex */
+	display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    /* .flex-wrap */
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.shares-user {
+	margin: 7.5px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    
+	/* .d-inline-flex */
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+
+    /* .align-items-center */
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.shares-user .image {
+
+}
+
+.shares-user .image > img {
+    width: 40px;
+    height: 40px;
+}
+
+.shares-user .info {
+	margin-left: 15px;
+}
+
+.shares-user .info-email {
+    font-weight: 500;
+}
+
+.shares-user .info-access {
+    font-size: 14px;
+    color: #999;
+}
+
+.shares-user .info-access-item {
+	display: none;
+}
+
+.shares-user .info-access-item + .info-access-item {
+	margin-left: 5px;
+}
+
+.shares-user .info-access-item.active {
+	display: inline-block;
+}
+
+.shares-user .action {
+	margin-left: 15px;
+}

@@ -1,0 +1,6 @@
+**/node_modules/
+**/Logs/
+**/logs/
+**/.gulp/
+**/build/
+!./www/application/logs/**

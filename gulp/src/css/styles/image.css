@@ -1,0 +1,66 @@
+﻿/**
+ *  Изображения.
+ */
+.image {
+	display: block;
+	will-change: transform, opacity;
+}
+
+.image > img {
+	width: 100%;
+	height: auto;
+}
+
+.avatar > img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+/* Изображения, которые открываются по нажатию */
+.opener {
+	cursor: pointer;
+}
+
+.opener:hover {
+	box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+    opacity: .8;
+}
+
+/* Загрузка статичных изображений */
+.image-loader {
+	position: relative;
+}
+
+.image-loader::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	background: radial-gradient(farthest-side at center, rgba(255, 255, 255, .1), rgba(170, 170, 170, 0));
+	animation: image-loader .8s ease-in-out infinite;
+	transition: opacity .2s ease-in-out;
+}
+
+.image-loader > img {
+	opacity: 0;
+	transition: opacity .2s ease-in-out;
+}
+
+.image-loader-success::before,
+.image-loader-error::before {
+	opacity: 0;
+	animation: none;
+}
+
+.image-loader-other.image-loader-error {
+	/* Тут можно запилить "Image not found" */
+}
+
+.image-loader-success > img {
+	opacity: 1;
+}

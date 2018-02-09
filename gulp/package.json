@@ -1,0 +1,116 @@
+{
+  "name": "TODO-менеджер",
+  "description": "Работа со списками задач.",
+  "author": "Dmitriy Verkhoumov",
+  "version": "1.0.0",
+  "private": true,
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      [
+        "babelify",
+        {
+          "presets": [
+            [
+              "es2015",
+              {
+                "targets": {
+                  "browsers": [
+                    "last 30 versions"
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    ]
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "popper": {
+      "depends": [
+        "jquery:jQuery"
+      ],
+      "exports": "Popper"
+    },
+    "bootstrap": {
+      "depends": [
+        "jquery:jQuery",
+        "popper:Popper"
+      ],
+      "exports": "bootstrap"
+    }
+  },
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "popper": "./node_modules/popper.js/dist/umd/popper.js",
+    "bootstrap": "./node_modules/bootstrap/dist/js/bootstrap.js",
+    "moment": "./node_modules/moment/moment.js",
+    "moment-ru": "./node_modules/moment/locale/ru.js",
+    "moment_timezone": "./node_modules/moment-timezone/moment-timezone.js",
+    "mustache": "./node_modules/mustache/mustache.js",
+    "noty": "./node_modules/noty/lib/noty.js",
+    "config": "./src/js/config.js",
+    "lang": "./src/js/lang.js",
+    "functions": "./src/js/functions.js",
+    "auth": "./src/js/plugins/auth.js",
+    "avatar-delete": "./src/js/plugins/avatar-delete.js",
+    "email-accept": "./src/js/plugins/email-accept.js",
+    "email-restore": "./src/js/plugins/email-restore.js",
+    "image-loader": "./src/js/plugins/image-loader.js",
+    "list-delete": "./src/js/plugins/list-delete.js",
+    "list-edit": "./src/js/plugins/list-edit.js",
+    "registration": "./src/js/plugins/registration.js",
+    "settings": "./src/js/plugins/settings.js",
+    "share": "./src/js/plugins/share.js",
+    "share-check": "./src/js/plugins/share-check.js",
+    "share-create": "./src/js/plugins/share-create.js",
+    "share-delete": "./src/js/plugins/share-delete.js",
+    "share-edit": "./src/js/plugins/share-edit.js",
+    "task": "./src/js/plugins/task.js",
+    "task-create": "./src/js/plugins/task-create.js",
+    "task-delete": "./src/js/plugins/task-delete.js",
+    "task-deleteImage": "./src/js/plugins/task-deleteImage.js",
+    "task-edit": "./src/js/plugins/task-edit.js",
+    "task-search": "./src/js/plugins/task-search.js",
+    "task-tags": "./src/js/plugins/task-tags.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
+    "browserify-shim": "^3.8.14",
+    "del": "^3.0.0",
+    "factor-bundle": "^2.5.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-cssimport": "^6.0.0",
+    "gulp-file": "^0.3.0",
+    "gulp-file-include": "^1.2.0",
+    "gulp-merge": "^0.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-tap": "^1.0.1",
+    "gulp-tinypng": "^1.0.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "dependencies": {
+    "animate.css": "^3.5.2",
+    "bootstrap": "^4.0.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "jquery": "^3.2.1",
+    "moment": "^2.19.2",
+    "moment-timezone": "^0.5.14",
+    "mustache": "^2.3.0",
+    "noty": "^3.1.3",
+    "popper.js": "^1.13.0"
+  },
+  "optionalDependencies": {}
+}
