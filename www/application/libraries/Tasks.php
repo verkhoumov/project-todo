@@ -751,8 +751,6 @@ class Tasks
 				$result['errors']['name'] = TRUE;
 			}
 
-			// TODO изображение
-
 			// Список меток.
 			if (isset($data['tags']) && !$this->check_tags($data['tags']))
 			{

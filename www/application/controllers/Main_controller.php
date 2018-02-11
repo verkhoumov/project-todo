@@ -1,9 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- *  Главная страница.
- */
 class Main_controller extends MY_Controller
 {
 	/**
@@ -30,6 +27,11 @@ class Main_controller extends MY_Controller
 
 	// ------------------------------------------------------------------------
 
+	/**
+	 *  Страница авторизации и регистрации.
+	 *  
+	 *  @return  void
+	 */
 	public function auth()
 	{
 		// Подключение компонентов.
@@ -60,6 +62,11 @@ class Main_controller extends MY_Controller
 		$this->Mustache->parse('index', $this->get_index_components($data));
 	}
 
+	/**
+	 *  Страница со перечнем списков задач.
+	 *  
+	 *  @return  void
+	 */
 	public function lists()
 	{
 		// Подключение компонентов.
@@ -103,6 +110,12 @@ class Main_controller extends MY_Controller
 		$this->Mustache->parse('index', $this->get_index_components($data));
 	}
 
+	/**
+	 *  Страница просмотра списка задач.
+	 *  
+	 *  @param   integer  $list_id  [ID списка]
+	 *  @return  void
+	 */
 	public function view($list_id = 0)
 	{
 		// Подключение компонентов.
@@ -130,7 +143,7 @@ class Main_controller extends MY_Controller
 
 		// Список тасков и доступ к самому списку.
 		$_tasks = $this->get_tasks($list_id);
-		$tasks = $_tasks['tasks'];
+		$tasks  = $_tasks['tasks'];
 		$access = $_tasks['access'];
 
 		if (!$access['read'])

@@ -50,6 +50,7 @@ var LANG = require('lang');
 			});
 		},
 
+		// Отключение плагина.
 		destroy: function() {
 			return this.each(function() {
 				if (!options) {

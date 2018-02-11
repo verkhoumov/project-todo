@@ -669,9 +669,6 @@ class User
 				$result['errors']['email'] = TRUE;
 			}
 
-			// TODO
-			// IMAGE
-
 			// Проверка данных на наличие.
 			if (!empty($strict_data))
 			{

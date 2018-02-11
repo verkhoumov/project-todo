@@ -56,6 +56,7 @@ var Mustache = require('mustache');
 			});
 		},
 
+		// Отключение плагина.
 		destroy: function() {
 			return this.each(function() {
 				if (!options) {

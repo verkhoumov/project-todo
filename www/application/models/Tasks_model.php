@@ -11,6 +11,7 @@ class Tasks_model extends MY_Model
 
 		// Подключение обработчика данных.
 		$this->load->helper('schemes/tasks');
+		$this->load->helper('schemes/tags');
 	}
 
 	// ------------------------------------------------------------------------

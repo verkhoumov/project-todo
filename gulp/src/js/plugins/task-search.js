@@ -61,7 +61,7 @@ var LANG = require('lang');
 			});
 		},
 
-		//
+		// Перезапуск поиска.
 		research: function(tasks) {
 			return this.each(function() {
 				if (!options) {
@@ -119,7 +119,7 @@ var LANG = require('lang');
 		});
 	};
 
-	//
+	// Сброс формы и отмена поиска.
 	var reset = function() {
 		if (!options) {
 			return;
@@ -133,12 +133,12 @@ var LANG = require('lang');
 		options.tasksList.find('.task-item').removeClass('find');
 	};
 
-	//
+	// Получение поисковой фразы.
 	var getWord = function() {
 		return options.input.val();
 	};
 
-	//
+	// Получение списка меток.
 	var getTags = function() {
 		var tags = {};
 
@@ -153,7 +153,7 @@ var LANG = require('lang');
 		return tags;
 	};
 
-	//
+	// Перестроение выпадающего списка.
 	var makeSelectTags = function(searchTags) {
 		if (!options || !searchTags || !searchTags.length) {
 			return;
