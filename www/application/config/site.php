@@ -8,7 +8,7 @@ $config['site'] = [
 	'url'             => 'http://todo.verkhoumov.ru/',
 	'title'           => 'TODO-менеджер',
 	'title_separator' => ' — ',
-	'version'         => '1.0.1',
+	'version'         => '1.0.2',
 
 	// Информация об авторе.
 	'author' => [

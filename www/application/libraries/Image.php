@@ -47,11 +47,17 @@ class Image
 	 *  @var  array
 	 */
 	private $crop_config = [
-		'image_library'  => 'gd2',
-		'maintain_ratio' => FALSE,
-		'width'          => 150,
-		'height'         => 150
+		'image_library' => 'gd2',
+		'x_axis'        => 0,
+		'y_axis'        => 0
 	];
+
+	/**
+	 *  Размер стороны изображения.
+	 *  
+	 *  @var  integer
+	 */
+	private $image_size = 150;
 
 	/**
 	 *  Имя поля формы, в котором хранится изображение.
@@ -59,6 +65,13 @@ class Image
 	 *  @var  string
 	 */
 	private $input_name = 'image';
+
+	/**
+	 *  Постфикс для сохранения оригинала.
+	 *  
+	 *  @var  string
+	 */
+	private $full_postfix = '_full';
 
 	/**
 	 *  Путь до изображения.
@@ -99,12 +112,14 @@ class Image
 		if (array_key_exists($type, $this->types))
 		{
 			$name = random_string('alpha', 30);
-			$path = $this->get_path($type);
-			$filepath = $this->get_filepath($type, $name);
+
+			$path          = $this->get_path($type);
+			$filepath      = $this->get_filepath($type, $name);
+			$filepath_full = $this->get_filepath_full($type, $name);
 
 			$this->CodeIgniter->load->library('upload', $this->upload_config + [
 				'upload_path' => $path,
-				'file_name'   => $name . '.png'
+				'file_name'   => $name . $this->full_postfix . '.png'
 			]);
 
 			if (!$this->CodeIgniter->upload->do_upload($this->input_name))
@@ -117,7 +132,7 @@ class Image
 				$data = $this->CodeIgniter->upload->data();
 
 				// Режем его до заданных размеров.
-				$this->crop($filepath);
+				$this->crop($filepath_full, $filepath, $data);
 
 				$result['status'] = TRUE;
 				$result['name']   = $name;
@@ -144,7 +159,13 @@ class Image
 
 		if (array_key_exists($type, $this->types) && $filename != '')
 		{
-			$result = unlink(FCPATH . $this->get_filepath($type, $filename));
+			$resultA = unlink(FCPATH . $this->get_filepath($type, $filename));
+			$resultB = unlink(FCPATH . $this->get_filepath_full($type, $filename));
+
+			if ($resultA || $resultB)
+			{
+				$result = TRUE;
+			}
 		}
 
 		return $result;
@@ -153,18 +174,60 @@ class Image
 	/**
 	 *  Обрезка изображения.
 	 *  
-	 *  @param   string   $filepath  [Путь до изображения]
+	 *  @param   string   $from  [Путь до изображения]
+	 *  @param   string   $to    [Куда сохранить изображение?]
+	 *  @param   array    $data  [Параметры изображения]
 	 *  @return  boolean
 	 */
-	public function crop($filepath = '')
+	public function crop($from = '', $to = '', $data = [])
 	{
-		$filepath = (string) $filepath;
+		$from = (string) $from;
+		$to   = (string) $to;
+		$data = (array) $data;
 
-		$this->CodeIgniter->load->library('image_lib', $this->crop_config + [
-			'source_image' => $filepath
-		]);
+		$result = FALSE;
 
-		return $this->CodeIgniter->image_lib->resize();
+		// Параметры обреза.
+		$config = [
+			'source_image'   => $from,
+			'new_image'      => $to,
+			'maintain_ratio' => FALSE
+		] + $this->crop_config;
+
+		// Размер исходного изображения.
+		$width  = (integer) $data['image_width'];
+		$height = (integer) $data['image_height'];
+
+		if ($width > $height)
+		{
+			$config['x_axis'] = (integer) (($width - $height) / 2);
+		}
+		elseif ($width < $height)
+		{
+			$config['y_axis'] = (integer) (($height - $width) / 2);
+		}
+
+		// Размеры.
+		$min = min([$width, $height]);
+		$config['width'] = $min;
+		$config['height'] = $min;
+
+		// Выполняем ресайз.
+		$this->CodeIgniter->load->library('image_lib', $config);
+
+		if ($this->CodeIgniter->image_lib->crop())
+		{
+			$this->CodeIgniter->image_lib->initialize([
+				'width'          => $this->image_size,
+				'height'         => $this->image_size,
+				'source_image'   => $to,
+				'maintain_ratio' => TRUE
+			] + $config);
+
+			$result = $this->CodeIgniter->image_lib->resize();
+		}
+
+		return $result;
 	}
 
 	/**
@@ -188,6 +251,18 @@ class Image
 	private function get_filepath($type = '', $filename = '')
 	{
 		return $this->get_path($type) . $filename . '.png';
+	}
+
+	/**
+	 *  Генерация пути непосредственно до оригинала изображения.
+	 *  
+	 *  @param   string  $type      [Тип]
+	 *  @param   string  $filename  [Имя файла]
+	 *  @return  string
+	 */
+	private function get_filepath_full($type = '', $filename = '')
+	{
+		return $this->get_path($type) . $filename . $this->full_postfix . '.png';
 	}
 
 	// ------------------------------------------------------------------------

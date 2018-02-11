@@ -482,6 +482,9 @@ $(document).ready(function() {
 	$(document).on('click', '.image.opener', function() {
 		var src = $(this).children('img').get(0).src;
 
+		// Подменяем ссылку на оригинал.
+		src = src.replace('.png', '_full.png');
+
 		window.open(src, '_blank');
 	});
 });
