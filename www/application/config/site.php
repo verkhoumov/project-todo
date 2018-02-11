@@ -17,8 +17,9 @@ $config['site'] = [
 		'link' => 'https://verkhoumov.ru/'
 	],
 
+	// Данные для отправки кода восстановления/подтверждения.
 	'noreply' => [
 		'email' => 'noreply@verkhoumov.ru',
-		'name' => 'Бот TODO-сервиса'
+		'name'  => 'Бот TODO-сервиса'
 	]
 ];

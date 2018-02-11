@@ -1,16 +1,15 @@
 <?php
 /**
- *  Приватные данные, запрещённые для публикации в Git.
+ *  Приватные данные, запрещённые для публикации в Git (опубликовано демо).
  */
-
 // База данных.
-define('PRIVATE_DB_USER', 'u0037136_todo');
-define('PRIVATE_DB_PASSWORD', 'u739eRDX-TnZkulrr-NYHPCDEP-6Vg1nhOu');
-define('PRIVATE_DB_NAME', 'u0037136_todo');
+define('PRIVATE_DB_USER', '*');
+define('PRIVATE_DB_PASSWORD', '*');
+define('PRIVATE_DB_NAME', '*');
 
 // Сессия.
 define('PRIVATE_SESSION_PREFIX', '*');
 define('PRIVATE_SESSION_POSTFIX', '*');
 
-//
-define('PRIVATE_PASSWORD_SALT', 'SJ#Aie2rm,5vcbui@H');
+// Соль для хеширования пароля по SHA256.
+define('PRIVATE_PASSWORD_SALT', '*');
