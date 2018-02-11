@@ -3,4 +3,5 @@
 **/logs/
 **/.gulp/
 **/build/
+private.*
 !./www/application/logs/**
